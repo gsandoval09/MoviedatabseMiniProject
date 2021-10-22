@@ -22,7 +22,19 @@ const db = mysql.createConnection(
   console.log(`Connected to the movies_db database.`)
 );
 
+app.get("/api/movies", (req,res)=>{
+    db.query('SELECT * FROM movies', function (err, results) {
+        res.json(results)
+      });
+      
+})
 
+app.post("/api/add-movie", (req,res)=>{
+    db.query('SELECT * FROM movies', function (err, results) {
+        res.json(results)
+      });
+      
+})
 // db.query(`DELETE FROM favorite_books WHERE id = ?`, deletedRow, (err, result) => {
 //   if (err) {
 //     console.log(err);
