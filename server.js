@@ -31,17 +31,17 @@ app.get("/api/movies", (req, res) => {
 
 app.post("/api/add-movie", (req, res) => {
     console.log(req.body);
-    const { movie_title } = req.body
-    if (movie_title) {
-        const newmovie = {
-            movie_title
-        }
-        db.query(`insert into movies (movie_name) values (${newmovie.movie_title}) `, function (err, results) {
+    const { movie_name } = req.body
+    if (movie_name) {
+        // const newmovie = {
+        //     movie_title
+        // }
+        db.query(`insert into movies (movie_name) values (${movie_name}) `, function (err, results) {
             console.log(results)
             
             const response = {
                 status: "success",
-                body: newmovie
+                body: movie_name
             }
             res.json(response)
         });
@@ -50,6 +50,7 @@ app.post("/api/add-movie", (req, res) => {
     }
 
 })
+
 
 
 // db.query(`DELETE FROM favorite_books WHERE id = ?`, deletedRow, (err, result) => {
